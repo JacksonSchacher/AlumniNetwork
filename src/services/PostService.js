@@ -17,5 +17,10 @@ class PostService {
     logger.log('Create Post', res)
     AppState.posts.unshift(res.data)
   }
+
+  async toggleLikes(postId) {
+    const res = await api.post(`api/posts/${postId}/like`)
+    logger.log('Likes', res)
+  }
 }
 export const postService = new PostService()

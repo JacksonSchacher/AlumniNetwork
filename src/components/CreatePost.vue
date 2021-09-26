@@ -2,14 +2,11 @@
   <div>
     <div class="d-flex justify-content-center">
       <div class="card mb-5 w-75 p-4 rounded text-center">
-        <div class="card-header ">
-          <h2>Create Post</h2>
-        </div>
         <form @submit.prevent="createPost()">
           <div class="form-group">
-            <label for="body" class="">Text</label>
+            <label for="body" class=""></label>
             <input
-              placeholder="body text.."
+              placeholder="Text.."
               v-model="editable.body"
               type="text"
               class="form-control"
@@ -19,7 +16,7 @@
             >
           </div>
           <div class="form-group">
-            <label for="imgUrl" class="">Image</label>
+            <label for="imgUrl" class=""></label>
             <input
               placeholder="Image URL.."
               v-model="editable.imgUrl"
@@ -30,7 +27,11 @@
             >
           </div>
           <div>
-            <button type="reset" class="btn btn-seconday selectable">
+            <button data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne"
+                    type="reset"
+                    class="btn btn-seconday selectable"
+            >
               Cancel
             </button>
             <button type="submit" class="btn btn-success lighten-30 selectable">
