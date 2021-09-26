@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid bg-dark">
     <div class="row threads">
-      <div class="col-md-10" v-for="p in posts" :key="p.id">
-        <Post :post="p" />v
+      <div class="col-md-6 flex-grow-1" v-for="p in posts" :key="p.id">
+        <Post :post="p" />
       </div>
     </div>
   </div>

@@ -1,39 +1,33 @@
 <template>
   <div class="d-flex justify-content-center">
-    <div class="card shadow rounded mb-5 w-75">
-      <div class="card-header d-inline-flex align-items-end">
+    <div class="card bg-primary shadow rounded mb-5 w-100">
+      <div class="card-header bg-light d-inline-flex align-items-end">
         <img :src="post.creator.picture" class="user-picture img-fluid selectable" @click="goToProfile(post.creatorId)">
         <h5>{{ post.creator.name }}</h5>
       </div>
-      <div class="card-body">
+      <div class="card-body text-light justify-content-center">
         <p class="card-text">
           {{ post.body }}
         </p>
-        <img :src="post.imgUrl" class="card-img-top img-fluid" alt="...">
+        <img :src="post.imgUrl" class="card-img img-fluid" alt="...">
       </div>
-      <div class="card-footer">
-        <i class="mdi mdi-hexagon-outline selectable" @click="toggleLikes(post.id)">{{ post.likes.length }}</i>
-        <i class="mdi mdi-hexagon"></i>
+      <div class="card-footer bg-light justify-content-end d-flex">
+        <i class="mdi mdi-hexagon-outline selectable f-16" @click="toggleLikes(post.id)">{{ post.likes.length }}</i>
+        <!-- <i class="mdi mdi-hexagon"></i> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from '@vue/reactivity'
 import { router } from '../router'
 import { postService } from '../services/PostService'
 import { profileService } from '../services/ProfileService'
-import { watchEffect } from '@vue/runtime-core'
 export default {
   props: {
     post: { type: Object, required: true }
   },
-  setup(props) {
-    const post = ref({})
-    watchEffect(() => {
-      post.likes.length = { ...props.likes }
-    })
+  setup() {
     return {
       async goToProfile(id) {
         await profileService.getUserProfile(id)
@@ -57,5 +51,9 @@ export default {
 }
 .card-header {
   border: none;
+}
+.card-img {
+  max-height: 50vh;
+  width: auto;
 }
 </style>

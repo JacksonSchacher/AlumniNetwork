@@ -1,7 +1,7 @@
 <template>
   <div class="row bg-dark">
     <div class="col-10">
-      <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion accordion-flush mb-3 w-50 m-auto" id="accordionFlushExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="flush-headingOne">
             <button class="accordion-button collapsed"

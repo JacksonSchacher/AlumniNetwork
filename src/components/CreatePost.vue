@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="d-flex justify-content-center">
-      <div class="card mb-5 w-75 p-4 rounded text-center">
+    <div class="d-flex">
+      <div class="card w-100 p-2 rounded text-center">
         <form @submit.prevent="createPost()">
           <div class="form-group">
             <label for="body" class=""></label>
@@ -26,7 +26,7 @@
               id="imgUrl"
             >
           </div>
-          <div>
+          <div class="mt-2 d-flex justify-content-end">
             <button data-bs-toggle="collapse"
                     data-bs-target="#flush-collapseOne"
                     type="reset"
