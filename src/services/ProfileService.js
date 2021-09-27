@@ -8,5 +8,11 @@ class ProfileService {
     logger.log('get user profile', res)
     AppState.profile = res.data
   }
+
+  async findProfile(query) {
+    const res = await api.get(`api/profiles?query=${query}`)
+    logger.log('Search for Profile', res)
+    AppState.profiles = res.data
+  }
 }
 export const profileService = new ProfileService()

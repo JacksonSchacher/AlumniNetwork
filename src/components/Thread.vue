@@ -24,7 +24,7 @@ export default {
       }
     })
     return {
-      posts: computed(() => AppState.posts)
+      posts: computed(() => AppState.posts.posts)
     }
   }
 }

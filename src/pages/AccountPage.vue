@@ -1,26 +1,47 @@
 <template>
-  <div class="profile-card card rounded shadow" :style="{backgroundImage: `url(${account.coverImg})`}">
-    <div class="mt-4">
-      <div class="row cover-img">
-        <img class="user-img" :src="account.picture" alt="">
-      </div>
-      <div class="profile-info bg-dark text-light card rounded shadow">
-        <div class="d-inline-flex">
-          <div>
-            <h1>{{ account.name }}</h1>
+  <div class="row bg-dark">
+    <div class="col-10">
+      <div class="profile-card card rounded shadow" :style="{backgroundImage: `url(${account.coverImg})`}">
+        <div class="mt-4">
+          <div class="row cover-img">
+            <img class="user-img" :src="account.picture" alt="">
           </div>
-          <div>
-            <i class="mdi mdi-github"></i>
-            <i class="mdi mdi-linkedin"></i>
-            <i class="mdi mdi-email"></i>
+          <div class="profile-info bg-dark text-light card rounded shadow">
+            <div class="d-flex">
+              <div>
+                <h1>{{ account.name }}</h1>
+              </div>
+              <div>
+                <i class="mdi mdi-github"></i>
+                <i class="mdi mdi-linkedin"></i>
+                <i class="mdi mdi-email"></i>
+              </div>
+              <div class="edit selectable" data-bs-toggle="modal" data-bs-target="#edit-account">
+                <i class="mdi mdi-account-edit"></i>
+              </div>
+            </div>
+          </div>
+          <div class="bg-light p-4 rounded">
+            <p>{{ account.bio }}</p>
           </div>
         </div>
       </div>
-      <div>
-        <p>{{ account.bio }}</p>
+      <div class="mt-5">
+        <Thread />
       </div>
     </div>
+    <div class="d-flex col-1">
+      <Ads />
+    </div>
   </div>
+  <Modal id="edit-account">
+    <template #modal-title>
+      <h5>Edit Account</h5>
+    </template>
+    <template #modal-body>
+      <ProfileForm />
+    </template>
+  </Modal>
 </template>
 
 <script>
@@ -42,7 +63,7 @@ export default {
 }
 .user-img {
   position: absolute;
-  bottom: 1rem;
+  bottom: 10rem;
   height: 9rem;
   width: 10rem;
   object-fit: cover;
@@ -57,11 +78,10 @@ export default {
   position: center;
 }
 .profile-info {
-  position: absolute;
   align-items: baseline;
-  bottom: -5rem;
   width: 55vw;
   margin-left: 3rem;
   padding: 1rem;
+
 }
 </style>

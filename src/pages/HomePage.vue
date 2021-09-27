@@ -26,12 +26,32 @@
     <div class="d-flex col-1">
       <Ads />
     </div>
+    <div class="col-10 d-flex justify-content-center">
+      <div v-if="posts.newer">
+        <span class="me-3 selectable" @click="goToPage(posts.newer)"><i class="mdi mdi-arrow-left pe-1"></i>
+          Newer</span>
+      </div>
+      <div v-if="posts.older">
+        <span class="ms-3 selectable" @click="goToPage(posts.older)">Older<i class="mdi mdi-arrow-right ps-1"></i></span>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { computed } from '@vue/runtime-core'
+import { postService } from '../services/PostService'
+import { AppState } from '../AppState'
 export default {
-  name: 'Home'
+  name: 'Home',
+  setup() {
+    return {
+      async goToPage(data) {
+        await postService.getPage(data)
+      },
+      posts: computed(() => AppState.posts)
+    }
+  }
 }
 </script>
 
