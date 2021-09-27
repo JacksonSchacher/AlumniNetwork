@@ -24,6 +24,13 @@ class PostService {
     const res = await api.post('api/posts', data)
     logger.log('Create Post', res)
     AppState.posts.unshift(res.posts.data)
+    this.getPosts()
+  }
+
+  async deletePost(postId) {
+    await api.delete(`api/posts/${postId}`)
+    AppState.posts = AppState.posts.posts.filter(p => p.id !== postId)
+    this.getPosts()
   }
 
   async toggleLikes(postId) {
@@ -33,6 +40,7 @@ class PostService {
     AppState.posts.posts.splice(postIndex, 1, res.data)
     AppState.posts = [...AppState.posts]
     logger.log('Likes', res)
+    this.getPosts()
   }
 
   async getPage(data) {

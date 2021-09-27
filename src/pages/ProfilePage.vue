@@ -24,7 +24,13 @@
         </div>
       </div>
       <div class="mt-5">
-        <Thread />
+        <div class="container-fluid bg-dark">
+          <div class="row threads">
+            <div class="col-md-6 flex-grow-1" v-for="p in posts" :key="p.id">
+              <Post :post="p" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="d-flex col-1">
@@ -39,7 +45,8 @@ import { AppState } from '../AppState'
 export default {
   setup() {
     return {
-      profile: computed(() => AppState.profile)
+      profile: computed(() => AppState.profile),
+      posts: computed(() => AppState.posts.posts)
     }
   }
 }

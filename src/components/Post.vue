@@ -28,19 +28,25 @@ import { router } from '../router'
 import { postService } from '../services/PostService'
 import { profileService } from '../services/ProfileService'
 import { AppState } from '../AppState'
+
 export default {
   props: {
     post: { type: Object, required: true }
   },
-  setup() {
+  setup(props) {
     return {
       account: computed(() => AppState.account),
+
       async goToProfile(id) {
         await profileService.getUserProfile(id)
+        await postService.getPosts(id.value)
         router.push({ name: 'Profile' })
       },
       async toggleLikes(id) {
         await postService.toggleLikes(id)
+      },
+      async deletePost(id) {
+        await postService.deletePost(id)
       }
     }
   }
